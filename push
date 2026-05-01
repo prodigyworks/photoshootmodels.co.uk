@@ -2,4 +2,4 @@ git add .
 git commit -m "$1"
 git push origin master
 
- git ftp push  --user photoshootmodels --passwd Jasmin717440! ftp://photoshootmodels.co.uk/httpdocs
+ git ftp init  --user photoshootmodels --passwd Jasmin717440! ftp://photoshootmodels.co.uk/httpdocs
