@@ -28,15 +28,6 @@
     <script src="js/touchTouch.jquery.js"></script>
 
     <script src="js/sForm.js"></script>
-    <script>
-        $(document).ready(
-            function() {
-                $('#readmorebtn').on('click', function() {
-                    $('#slideBox').slideToggle(400); // slide up/down animation
-                });
-            }
-        );
-    </script>
     <style>
         .psm-modal {
             display: none;
@@ -49,19 +40,20 @@
             z-index: 9999;
         }
 
-        .psm-modal-content h2 {
-            padding: 4px;
-        }
-
+        /* Tighter mobile layout */
         .psm-modal-content {
-            width: 90%;
-            max-width: 600px;
+            width: 92%;
+            max-width: 480px; /* reduced from 600px */
             background: #fff;
-            margin: 60px auto;
-            padding: 25px;
+            margin: 40px auto; /* reduced top spacing for mobile */
+            padding: 20px;     /* slightly smaller padding */
             border-radius: 10px;
             position: relative;
             animation: slideUp 0.4s ease;
+        }
+
+        .psm-modal-content h2 {
+            padding: 4px;
         }
 
         .psm-modal-img {
@@ -72,11 +64,19 @@
 
         .psm-close {
             position: absolute;
-            top: 12px;
-            right: 18px;
-            font-size: 28px;
+            top: -6px;      /* moved UP */
+            right: -6px;    /* moved RIGHT */
+            font-size: 30px;
             cursor: pointer;
+            background: #fff;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            line-height: 30px;
+            text-align: center;
+            box-shadow: 0 0 6px rgba(0,0,0,0.25);
         }
+
 
         @keyframes slideUp {
             from { transform: translateY(40px); opacity: 0; }
@@ -89,22 +89,36 @@
             padding: 9px;
             font-weight: bold;
         }
+
         #psmModalTitle {
             color: black;
         }
+
         .fulldescription {
             display: none;
         }
+
         #psmModalText {
             color: #111111;
         }
+
+        /* Extra mobile refinement */
+        @media (max-width: 480px) {
+            .psm-modal-content {
+                width: 94%;
+                margin: 30px auto;
+                padding: 18px;
+                border-radius: 8px;
+            }
+        }
+
     </style>
     <script>
         $(window).load(function(){
             $('.btn-1').on('click', function(e) {
                     e.preventDefault();
 
-                    var box = $(this).closest('.box-1');
+                    var box = $(this).closest('.surroundingbox');
                     var imgSrc = box.find('img').attr('src');
                     var title = box.find('.text-2').text();
                     var fulldescription  = box.find('.fulldescription').text();
@@ -326,7 +340,7 @@ Alongside our online portfolio system, we offer exclusive access to our Oxford S
                     </ul>
                 </div>
             </div>
-            <div class="grid_3 box-1">
+            <div class="grid_3 box-1 surroundingbox">
                 <img src="images/page-1_img-5.jpg" alt="" class="wrapper">
                 <div class="inside">
                     <p class="text-2">fashion models</p>
@@ -337,7 +351,7 @@ Alongside our online portfolio system, we offer exclusive access to our Oxford S
                 </div>
                 <a href="#" class="btn-1">learn more</a>
             </div>
-            <div class="grid_3 box-1">
+            <div class="grid_3 box-1 surroundingbox">
                 <img src="images/page-1_img-6.jpg" alt="" class="wrapper">
                 <div class="inside">
                     <p class="text-2">Actors</p>
@@ -348,7 +362,7 @@ Alongside our online portfolio system, we offer exclusive access to our Oxford S
                 </div>
                 <a href="#" class="btn-1">learn more</a>
             </div>
-            <div class="grid_3 box-1">
+            <div class="grid_3 box-1 surroundingbox">
                 <img src="images/page-4_img-8.jpg" alt="" class="wrapper">
                 <div class="inside">
                     <p class="text-2">Creators</p>
@@ -359,7 +373,7 @@ Alongside our online portfolio system, we offer exclusive access to our Oxford S
                 </div>
                 <a href="#" class="btn-1">learn more</a>
             </div>
-            <div class="grid_3 box-1">
+            <div class="grid_3 box-1 surroundingbox">
                 <img src="images/page-4_img-7.jpg" alt="" class="wrapper">
                 <div class="inside">
                     <p class="text-2">Influencers</p>
@@ -385,19 +399,39 @@ Alongside our online portfolio system, we offer exclusive access to our Oxford S
                 <h2>our services</h2>
                 <div>Experience a full suite of professional services at our Oxford Street London studio, designed to elevate your look and boost your career: </div>
                 <ul class="list">
-                    <li>
-                        <a href="#">sit avertas dero</a>
+                    <li class="surroundingbox">
+                        <a class="btn-1">photoshoots</a>
+                        <div class="fulldescription">
+                            <img src="images/page-3_img-2.jpg" alt="" class="wrapper">
+
+                            Our Oxford Street London studio offers premium photoshoots designed to elevate your modelling portfolio. With professional lighting, expert posing guidance, and a creative team dedicated to capturing your best angles, we produce high-quality images that help you stand out to agencies, brands, and casting directors.
+                        </div>
                     </li>
-                    <li><a href="#">tasero yaeala miaseay jausqe</a></li>
-                    <li><a href="#">merneory kastreas</a></li>
+                    <li class="surroundingbox">
+                        <a class="btn-1">makeup</a>
+                        <div class="fulldescription">
+                            <img src="images/page-3_img-3.jpg" alt="" class="wrapper">
+
+                            Our in-house beauty team includes trained makeup artists and hair stylists who craft looks tailored to your style and goals. Whether you want natural beauty, editorial glam, or bold creative styling, we ensure you look camera-ready with a polished, professional finish.
+                        </div>
+                    </li>
+                    <li class="surroundingbox">
+                        <a class="btn-1">portfolio</a>
+                        <div class="fulldescription">
+                            <img src="images/page-3_img-1.jpg" alt="" class="wrapper">
+
+                            We help you create a complete, cohesive modelling portfolio that showcases your versatility and strengths. From outfit planning to pose coaching and image selection, our team guides you through every step to ensure your portfolio meets industry standards and attracts the right opportunities.
+                        </div>
+                    </li>
+                    <li class="surroundingbox">
+                        <a class="btn-1">creator-sessions</a>
+                        <div class="fulldescription">
+                            <img src="images/page-4_img-2.jpg" alt="" class="wrapper">
+
+                            Our studio provides influencers and content creators with premium sessions tailored for social media, brand campaigns, and personal branding. With professional lighting, creative direction, and high-end editing, we help you produce scroll-stopping visuals that elevate your online presence.
+                        </div>
+                    </li>
                 </ul>
-                <ul class="list">
-                    <li><a href="#">mertaeory lkauisyase</a></li>
-                    <li><a href="#">verode fertase</a></li>
-                    <li><a href="#">kdea bertaedertas masuyas</a></li>
-                    <li><a href="#">miyteystase deras</a></li>
-                </ul>
-                <a href="#" class="btn-2">view more</a>
             </div>
             <div class="grid_4 preffix_1">
                 <h2>fresh news</h2>
