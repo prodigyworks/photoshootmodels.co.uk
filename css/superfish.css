@@ -1,0 +1,265 @@
+/*menu with jquery.horizontalNav.js*/
+
+nav { 
+	display: block;
+	z-index: 11;
+	float: left;
+	margin-top: 36px;
+}
+
+.sf-menu {}
+.sf-menu > li > span { display: block; position: relative;}
+.sf-menu ul { position:absolute; top:-999px; display:none; }/*offset of submenus need to match (see below)*/
+.sf-menu li { position:relative; background: none;}
+	.sf-menu a {
+		display: block;
+		text-decoration: none;
+		font-family: 'Open Sans', sans-serif;
+		text-transform: uppercase;
+		color: #fff;
+}
+		.sf-menu a:hover {text-decoration: none;}
+
+/*================================>> 1 Level <<========================================*/
+
+li.sfHover {position: relative;}
+.sf-menu > li > a {
+	display:inline-block;
+	vertical-align: middle;
+	-moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease;
+	z-index: 100;
+	font-size: 14px;
+	line-height: 16px;
+	position: relative;
+}
+.sf-menu > li {
+	display: block;
+	position: relative;
+	float: left;
+	margin-right: 65px;
+}
+.sf-menu > li + li:after {
+	top: -11px;
+	left: -38px;
+	background: url(../images/bord-1.png) 0 0 no-repeat;
+	width: 21px;
+	height: 48px;
+	position: absolute;
+	content: "";
+}
+	.sf-menu > li:hover > a, 
+	.sf-menu > li.current > a, 
+	.sf-menu > li.sfHover > a,
+	.sf-menu > li:hover > span, 
+	.sf-menu > li.current > span, 
+	.sf-menu > li.sfHover > span {
+		color: #fff2c7;
+	}
+
+.sf-menu > li > a:before {
+	position: absolute;
+	content:"";
+	left: 50%;
+	margin-left: -14px;
+	right: 0;
+	top: -41px;
+	-moz-transition: top 0.3s ease-out;
+    -o-transition: top 0.3s ease-out;
+    -webkit-transition: top 0.3s ease-out;
+	border: 9px solid;
+	border-color: #e22b53 transparent transparent transparent;
+	width: 0;
+	height: 0;
+	display: none;
+	transition: all .4s ease;
+}
+.sf-menu > li > a:hover:before,
+.sf-menu > li.current > a:before,
+.sf-menu > li.sfHover > a:before {
+	display: block;
+}
+.sf-menu > li > a.sf-with-ul:after {
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	content:"\f105";
+	margin-left: 5px;
+	-moz-transition: top 0.3s ease-out;
+    -o-transition: top 0.3s ease-out;
+    -webkit-transition: top 0.3s ease-out;
+}
+
+
+.sf-menu {
+    list-style: none;
+    counter-reset: point; /* задаем переменную для счетчика */
+}
+.sf-menu > li:before {
+    content:'0' counter(point) '.'; /* выводим значение переменной */
+    counter-increment: point 1; /* увеличваем счетчик на 1 */
+    font-size: 14px;
+    position: relative;
+    left: 0;
+    width: 24px;
+    color: #e12950;
+    margin-left: 4px;
+    display: inline-block;
+    top: 1px;
+}
+
+
+
+/*================================>> 2 Level <<========================================*/
+
+.sf-menu > li > ul, 
+.sf-menu > li.sfHover > ul {
+	top: 60px;
+	right: 50%;
+	width: 236px;
+	margin-right: -63px;
+	z-index:99;
+	background: #e22b53;
+	text-align: left;
+	padding-top: 15px;
+	padding-bottom: 13px;
+	width: 102px;
+}
+
+.sf-menu > li > ul:before {
+	position: absolute;
+	left: 50%;
+	margin-left: -9px;
+	top: -16px;
+	content: "";
+	border: 9px solid;
+	border-color: transparent transparent #e22b53 transparent;
+}
+
+.sf-menu > li > ul > li { padding: 0 20px;}
+.sf-menu > li > ul > li > a {
+	display: block;
+	padding: 0px;
+	color: #fff;
+	font-size: 12px;
+	line-height: 35px;
+	font-weight: bold;
+}
+.sf-menu > li > ul > li + li > a {
+	background: url(../images/bord-2.png) 0 0px repeat-x;
+}
+.sf-menu li li a:hover, 
+.sf-menu li.sfHover li.sfHover > a,
+.sf-menu li.sfHover li.sfHover span { 
+	color: #ffadbf;
+}
+
+.sf-menu > li > ul > li > a.sf-with-ul:after  {
+	position: absolute;
+	display: block;
+	content:"\f105";
+	right: 20px;
+	text-align: center;
+	margin-left: -10px;	
+	top: 10px;
+	-moz-transition: top 0.3s ease-out;
+    -o-transition: top 0.3s ease-out;
+    -webkit-transition: top 0.3s ease-out;
+	overflow: hidden;
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 14px;
+	color: #fff;
+}
+.sf-menu > li > ul > li > a.sf-with-ul:hover:after  { color: #b8baaa;}
+
+/*================================>> 3 Level <<========================================*/
+
+.sf-menu li li ul {
+	top: -3px;
+	left: 102px;
+	z-index:99;
+	position: absolute;
+	text-align: left;
+	padding-top: 9px;
+	padding-bottom: 6px;
+	background: #262626;
+	width: 85px;
+	padding-top: 3px;
+	padding-bottom: 10px;
+	/* margin-left: -116px; */
+}
+
+.sf-menu li li li {padding: 0 15px;}
+.sf-menu li li li a {
+	display: block;
+	padding: 0px;
+	color: #fff;
+	font-size: 12px;
+	line-height: 35px;
+	font-weight: bold;
+}
+.sf-menu li li li a:hover {	color: #7e7e7e;}
+.sf-menu li li li + li > a {
+	background: url(../images/bord-2.png) 0 0px repeat-x;
+}
+
+
+/*==================================RESPONSIVE LAYOUTS===============================================*/
+
+@media only screen and (max-width: 1220px) {
+	.sf-menu > li { margin-right: 50px;}
+	
+}
+
+@media only screen and (max-width: 995px) {
+	.sf-menu > li { margin-right: 15px;}
+	.sf-menu > li + li:after { left: -15px;}
+}
+@media only screen and (max-width: 795px) {
+
+}
+@media only screen and (max-width: 767px) {
+	ul.sf-menu { display:none !important;}
+
+	nav select {
+		height: 35px;
+		border: 1px solid #323232;
+		font-family: Trebuchet MS, sans-serif;
+		font-size: 14px;
+		line-height: 20px;
+		color: #fff;
+		background-color: #323232;
+		width: 100%;
+	    outline: none;
+	    padding: 5px;
+		font-weight: bold;
+		margin-top: 20px;
+}
+	nav select option:first-child {
+		color:#fff;
+	}
+	h1, nav { float: none;}
+	nav { margin-top: 89px; width: auto;}
+}
+
+@media only screen and (max-width: 479px) {
+	.h-top h1 img { width: 80%;}
+}
+
+
+
+
+
