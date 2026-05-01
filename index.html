@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-    <title>main</title>
+    <title>Photoshoot Models</title>
     <meta charset="utf-8">
     <meta name = "format-detection" content = "telephone=no" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -29,21 +29,23 @@
 
     <script src="js/sForm.js"></script>
     <script>
-        const btn = document.getElementById('readmorebtn');
-        const box = document.getElementById('slideBox');
-
-        btn.addEventListener('click', () => {
-            box.classList.toggle('open');
-        });
+        $(document).ready(
+            function() {
+                $('#readmorebtn').on('click', function() {
+                    console.log("CLICK");
+                    $('#slideBox').slideToggle(400); // slide up/down animation
+                });
+            }
+        );
     </script>
     <style>
         .slide {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
+            display: none;
         }
-        .slide.open {
-            max-height: 500px; /* adjust depending on content */
+        .listing li {
+            margin-left: 40px;
+            list-style: circle;
+            padding: 10px;
         }
     </style>
     <script>
@@ -220,15 +222,18 @@ Alongside our online portfolio system, we offer exclusive access to our Oxford S
                 <br>
                 <a id="readmorebtn" class="btn">Read more</a>
                 <div class="slide" id="slideBox">
+                    <br>
                     <div class="text-6">
                         Join a growing community of models, influencers, and creators who are redefining modern modelling through technology, creativity, and premium in‑person support.
     Register today to upload your photos, book a studio session, and get discovered by brands across the UK.
                     </div>
 
+                    <br>
                     <div>
                         Our Oxford Street Studio Located in the heart of London’s fashion district, our studio offers:
                     </div>
-                    <ul>
+                    <br>
+                    <ul class="listing">
                         <li>
                             <b>Professional Makeup & Hair Styling</b><br>
                             Tailored looks created by experienced beauty artists.
