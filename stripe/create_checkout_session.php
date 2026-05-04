@@ -7,6 +7,7 @@ header("Content-Type: application/json");
 
 // Load Stripe
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/prodigyworks.php';
 
 // Your Stripe Secret Key
 \Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY); // <-- Replace with your real key
