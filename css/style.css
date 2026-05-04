@@ -1173,4 +1173,25 @@ footer {
   }
   .top-bg { height: 110px;}
 }
+
+/* Book Your Photoshoot Button */
+.sf-menu .book-photoshoot-btn {
+  display: inline-block;
+  background: #e12a50;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-left: 15px;
+  transition: all 0.4s ease;
+}
+
+.sf-menu .book-photoshoot-btn:hover {
+  background: #c71d42;
+  color: #fff !important;
+  text-decoration: none;
+}
+
 /*Core variables and mixins*/
