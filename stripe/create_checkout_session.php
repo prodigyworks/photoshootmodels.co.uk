@@ -54,8 +54,8 @@ try {
             'booking_date' => $date,
             'booking_time' => $time,
         ],
-        'success_url' => 'https://www.photoshootmodels.co.uk/stripe/success',
-        'cancel_url' => 'https://www.photoshootmodels.co.uk/stripe/cancel',
+        'success_url' => 'https://www.photoshootmodels.co.uk/stripe/success.php',
+        'cancel_url' => 'https://www.photoshootmodels.co.uk/stripe/cancel.php',
     ]);
 
     echo json_encode(['url' => $session->url]);
