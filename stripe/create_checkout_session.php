@@ -9,7 +9,7 @@ header("Content-Type: application/json");
 require __DIR__ . '/vendor/autoload.php';
 
 // Your Stripe Secret Key
-\Stripe\Stripe::setApiKey('sk_test_51T5o4AK1RwVchaqCldkWlKvQD3GzDHV39OCbQg8hLfh7UQ0mtjL9FeyuQhYxrFG4SFSvGr3z4mr0ZogYMSztQxvk00XctUH7ea'); // <-- Replace with your real key
+\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY); // <-- Replace with your real key
 
 // Read JSON input
 $input = json_decode(file_get_contents('php://input'), true);
