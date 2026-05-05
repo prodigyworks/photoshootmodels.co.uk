@@ -24,6 +24,7 @@
     $lastName  = $input['lastName'] ?? '';
     $email     = $input['email'] ?? '';
     $phone     = $input['phone'] ?? '';
+    $gender    = $input['gender'] ?? '';
     $address   = $input['address'] ?? '';
     $notes     = $input['notes'] ?? '';
     $date      = $input['date'] ?? '';
@@ -51,10 +52,10 @@
                 'lastName' => $lastName,
                 'email' => $email,
                 'phone' => $phone,
+                'gender' => $gender,
                 'address' => $address,
                 'notes' => $notes,
-                'booking_date' => $date,
-                'booking_time' => $time,
+                'bookingdatetime' => "{$date} {$time}",
             ],
             'success_url' => 'https://www.photoshootmodels.co.uk/stripe/success.php',
             'cancel_url' => 'https://www.photoshootmodels.co.uk/stripe/cancel.php',
