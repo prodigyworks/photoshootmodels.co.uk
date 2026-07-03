@@ -1,8 +1,0 @@
-RewriteEngine On
-
-# Allow calling zcard without .php
-RewriteRule ^api/zcard$ api/zcard.php [L,QSA]
-
-# Optional: allow trailing slash
-RewriteRule ^api/zcard/$ api/zcard.php [L,QSA]
-
