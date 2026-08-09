@@ -14,7 +14,7 @@
     $input = json_decode(file_get_contents("php://input"), true);
 
     $paymentMethod = $input['payment_method'];
-    $deposit = floatval($input['totalDeposit']);
+    $deposit = floatval($input['totalDeposit'] ?? 50); // Default to £50 if not provided
     $amount = intval($deposit * 100);
 
     try {
