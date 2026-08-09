@@ -22,6 +22,10 @@
             'amount' => $amount,
             'currency' => 'gbp',
             'capture_method' => 'manual',
+            'automatic_payment_methods' => [
+                'enabled' => true,
+                'allow_redirects' => 'never'
+            ],
             'payment_method' => $paymentMethod,
             'confirm' => true,
             'metadata' => [
