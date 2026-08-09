@@ -186,9 +186,10 @@
     </section>
 
     <script>
-        const stripe = Stripe("<?php echo STRIPE_PUBLIC_KEY; ?>");
+        const stripe = Stripe("<?php echo STRIPE_PUBLIC_KEY; ?>", { locale: 'en-GB' });
         const elements = stripe.elements();
         const card = elements.create("card", {
+            hidePostalCode: false,
             style: {
                 base: {
                     color: '#111111',
