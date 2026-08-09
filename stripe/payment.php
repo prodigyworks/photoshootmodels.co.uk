@@ -43,7 +43,7 @@ document.getElementById("payBtn").onclick = async () => {
     }
 
     // Send paymentMethod.id to your PHP backend
-    const response = await fetch("onhold.php", {
+    const response = await fetch("create_hold.php", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
