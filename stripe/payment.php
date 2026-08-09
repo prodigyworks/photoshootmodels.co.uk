@@ -7,8 +7,6 @@
     // Load Stripe
     require __DIR__ . '/vendor/autoload.php';
     require __DIR__ . '/prodigyworks.php';
-
-    $input = json_decode(file_get_contents("php://input"), true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,12 +47,12 @@ document.getElementById("payBtn").onclick = async () => {
         body: JSON.stringify({
             payment_method: paymentMethod.id,
             totalDeposit: 50.00,   // example deposit
-            firstName: "<?php echo $input['firstName'] ?? ''; ?>",
-            lastName: "<?php echo $input['lastName'] ?? ''; ?>",
-            email: "<?php echo $input['email'] ?? ''; ?>",
-            phone: "<?php echo $input['phone'] ?? ''; ?>",
-            date: "<?php echo $input['date'] ?? ''; ?>",
-            time: "<?php echo $input['time'] ?? ''; ?>"
+            firstName: "<?php echo $_POST['firstName'] ?? ''; ?>",
+            lastName: "<?php echo $_POST['lastName'] ?? ''; ?>",
+            email: "<?php echo $_POST['email'] ?? ''; ?>",
+            phone: "<?php echo $_POST['phone'] ?? ''; ?>",
+            date: "<?php echo $_POST['date'] ?? ''; ?>",
+            time: "<?php echo $_POST['time'] ?? ''; ?>"
         })
     });
 
