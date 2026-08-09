@@ -26,7 +26,7 @@
 <div id="result"></div>
 
 <script>
-const stripe = Stripe("pk_test_xxx"); // <-- your Stripe public key
+const stripe = Stripe("<?php echo STRIPE_PUBLIC_KEY; ?>"); // <-- your Stripe public key
 const elements = stripe.elements();
 const card = elements.create("card");
 card.mount("#card-element");
