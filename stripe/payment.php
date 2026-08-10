@@ -292,6 +292,27 @@
             background: #d64d14;
         }
 
+        /* Button spinner */
+        .btn-text {
+            vertical-align: middle;
+        }
+
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.45);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            margin-left: 12px;
+            vertical-align: middle;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         #result {
             margin-top: 18px;
             color: #444;
@@ -457,7 +478,7 @@
                 <label class="field-label" for="postcode-input">Postcode</label>
                 <input id="postcode-input" type="text" placeholder="e.g. SW1A 1AA">
             </div>
-            <button id="payBtn" type="button">Place Payment On Hold</button>
+            <button id="payBtn" type="button"><span class="btn-text">Place Payment On Hold</span><span id="paySpinner" class="spinner" aria-hidden="true"></span></button>
             <div id="result"></div>
         </div>
     </section>
@@ -503,6 +524,7 @@
         cardCvc.mount("#card-cvc-element");
 
         const payButton = document.getElementById('payBtn');
+        const paySpinner = document.getElementById('paySpinner');
         const resultContainer = document.getElementById('result');
         const postcodeInput = document.getElementById('postcode-input');
 
@@ -517,6 +539,12 @@
 
         document.getElementById("payBtn").onclick = async () => {
             resultContainer.innerHTML = '';
+            // show spinner and disable button while verifying
+            payButton.disabled = true;
+            if (paySpinner) paySpinner.style.display = 'inline-block';
+            const btnText = payButton.querySelector('.btn-text');
+            if (btnText) btnText.textContent = 'Verifying...';
+
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
                 card: cardNumber,
@@ -528,11 +556,17 @@
             });
 
             if (error) {
+                if (paySpinner) paySpinner.style.display = 'none';
+                if (btnText) btnText.textContent = 'Place Payment On Hold';
+                payButton.disabled = false;
                 resultContainer.innerHTML = '<div class="error-box">' +
                     '<strong>Payment failed:</strong> ' + error.message +
                     '</div>';
                 return;
             }
+
+            // proceed to server hold
+            if (btnText) btnText.textContent = 'Processing...';
 
             const response = await fetch('create_hold.php', {
                 method: 'POST',
@@ -546,11 +580,19 @@
                     email: "<?php echo $_POST['email'] ?? ''; ?>",
                     phone: "<?php echo $_POST['phone'] ?? ''; ?>",
                     date: "<?php echo $_POST['date'] ?? ''; ?>",
-                    time: "<?php echo $_POST['time'] ?? ''; ?>"
+                    time: "<?php echo $_POST['time'] ?? ''; ?>",
+                    address: "<?php echo $_POST['address'] ?? ''; ?>",
+                    notes: "<?php echo $_POST['notes'] ?? ''; ?>",
+                    age: "<?php echo $_POST['age'] ?? ''; ?>",
+                    gender: "<?php echo $_POST['gender'] ?? ''; ?>",
+                    parentName: "<?php echo $_POST['parentName'] ?? ''; ?>"
                 })
             });
 
             if (!response.ok) {
+                if (paySpinner) paySpinner.style.display = 'none';
+                if (btnText) btnText.textContent = 'Place Payment On Hold';
+                payButton.disabled = false;
                 resultContainer.innerHTML = '<div class="error-box">' +
                     '<strong>Server error:</strong> Please try again later.' +
                     '</div>';
@@ -567,6 +609,8 @@
                     '</div>' +
                 '</div>';
 
+            if (paySpinner) paySpinner.style.display = 'none';
+            // hide the button after success
             payButton.style.display = 'none';
             document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
         };
