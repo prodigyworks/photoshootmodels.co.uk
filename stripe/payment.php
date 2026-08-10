@@ -8,7 +8,8 @@
     require __DIR__ . '/vendor/autoload.php';
     require __DIR__ . '/prodigyworks.php';
 ?>
-<!DOCT<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,10 +92,76 @@
         }
 
         .payment-panel p.description {
-            margin: 0 0 32px;
+            margin: 0 0 24px;
             font-size: 16px;
             line-height: 1.8;
             color: #6c6c6c;
+        }
+
+        .mock-card {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto 28px;
+            padding: 24px 24px 20px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #1a2a48 0%, #0b1a34 100%);
+            color: #fff;
+            box-shadow: 0 24px 60px rgba(15, 31, 71, 0.24);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mock-card::before {
+            content: '';
+            position: absolute; 
+            top: -20px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+
+        .mock-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 26px;
+        }
+
+        .mock-chip {
+            width: 52px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.24);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+
+        .mock-card-number {
+            font-size: 18px;
+            letter-spacing: 0.3em;
+            margin-bottom: 18px;
+        }
+
+        .mock-card-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            font-size: 13px;
+            text-transform: uppercase;
+            opacity: 0.88;
+        }
+
+        .mock-card-data span {
+            display: block;
+        }
+
+        .mock-card-data strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.72);
+            letter-spacing: 0.16em;
         }
 
         #card-element {
@@ -133,6 +200,51 @@
             min-height: 24px;
         }
 
+        .success-box {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 28px;
+            border-radius: 22px;
+            background: #f7fbff;
+            border: 1px solid #cfe7ff;
+            box-shadow: 0 16px 35px rgba(30, 45, 75, 0.08);
+        }
+
+        .success-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #0b74e1;
+            color: #ffffff;
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .success-copy h3 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            color: #111111;
+        }
+
+        .success-copy p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #4f4f4f;
+        }
+
+        .error-box {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: #ffe9e9;
+            border: 1px solid #f5c2c2;
+            color: #8a1f1f;
+        }
+
         @media (max-width: 840px) {
             .payment-panel {
                 margin: -70px 0 0;
@@ -163,6 +275,24 @@
                 margin: -60px 0 0;
                 padding: 28px 20px;
             }
+
+            .mock-card {
+                padding: 20px 18px 18px;
+            }
+
+            .mock-card-number {
+                font-size: 16px;
+            }
+
+            .mock-card-data {
+                gap: 12px;
+                font-size: 12px;
+            }
+
+            .success-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
         }
     </style>
 </head>
@@ -179,6 +309,22 @@
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
             <p class="description">Secure your studio booking with a £50 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
+
+            <div class="mock-card">
+                <div class="mock-card-row">
+                    <div>
+                        <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.88;">Photo Shoot Models</div>
+                    </div>
+                    <div class="mock-chip"></div>
+                </div>
+                <div class="mock-card-number">5210 4500 1234 0000</div>
+                <div class="mock-card-data">
+                    <span><strong>Card holder</strong>Studio Visitor</span>
+                    <span><strong>Expires</strong>12/28</span>
+                    <span><strong>Postcode</strong>SW1A 1AA</span>
+                </div>
+            </div>
+
             <div id="card-element"></div>
             <button id="payBtn" type="button">Place Payment On Hold</button>
             <div id="result"></div>
@@ -202,14 +348,19 @@
         });
         card.mount("#card-element");
 
+        const resultContainer = document.getElementById('result');
+
         document.getElementById("payBtn").onclick = async () => {
+            resultContainer.innerHTML = '';
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
                 card: card
             });
 
             if (error) {
-                document.getElementById('result').textContent = error.message;
+                resultContainer.innerHTML = '<div class="error-box">' +
+                    '<strong>Payment failed:</strong> ' + error.message +
+                    '</div>';
                 return;
             }
 
@@ -228,13 +379,23 @@
                 })
             });
 
+            if (!response.ok) {
+                resultContainer.innerHTML = '<div class="error-box">' +
+                    '<strong>Server error:</strong> Please try again later.</n' +
+                    '</div>';
+                return;
+            }
+
             const data = await response.json();
-            document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            resultContainer.innerHTML =
+                '<div class="success-box">' +
+                    '<div class="success-icon">✓</div>' +
+                    '<div class="success-copy">' +
+                        '<h3>Thank you for your payment</h3>' +
+                        '<p>Your deposit is now secured. You will receive a confirmation email shortly with the booking details and next steps.</p>' +
+                    '</div>' +
+                '</div>';
         };
     </script>
-).innerHTML = JSON.stringify(data, null, 2);
-};
-</script>
-
 </body>
 </html>
