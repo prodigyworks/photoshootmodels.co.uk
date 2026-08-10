@@ -32,30 +32,62 @@
             justify-content: center;
             flex-direction: column;
             text-align: center;
-            padding: 30px 16px 30px;
-            background: linear-gradient(180deg, rgba(15, 17, 25, 0.70) 0%, rgba(15, 17, 25, 0.18) 100%), url('../images/slide-1.jpg') center / cover no-repeat;
-            border-bottom-left-radius: 28px;
-            border-bottom-right-radius: 28px;
+            min-height: 25vh;
+            padding: 12px 16px 12px;
             overflow: hidden;
         }
 
+        .hero-carousel {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            grid-area: 1 / 1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 32%;
+            background: linear-gradient(180deg, rgba(15, 17, 25, 0.72) 0%, rgba(15, 17, 25, 0.22) 100%);
+        }
+
         .hero-top {
+            position: relative;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 12px;
+            flex-direction: row;
+            margin-top: -18vh;
+            gap: 16px;
             width: 100%;
+            flex-wrap: wrap;
         }
 
         .hero-logo {
-            width: 70px;
-            height: 70px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.32);
-            background: rgba(255,255,255,0.12);
+            border: 2px solid rgba(255,255,255,0.28);
+            background: rgba(255,255,255,0.14);
             padding: 10px;
-            box-sizing: border-box;
+            box-sizing: border-box; 
+            flex-shrink: 0;
         }
 
         .hero-brand {
@@ -63,39 +95,43 @@
             font-size: 12px;
             letter-spacing: .24em;
             text-transform: uppercase;
-            opacity: 0.95;
+            opacity: 0.94;
         }
 
         .hero-headline {
-            margin: 14px 0 10px;
-            font-size: 30px;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 28px;
             line-height: 1.05;
             letter-spacing: .12em;
             text-transform: uppercase;
             color: #ffffff;
-            max-width: 260px;
+            max-width: 320px;
         }
 
         .hero-copy {
-            margin: 0 auto;
-            max-width: 290px;
+            position: relative;
+            z-index: 1;
+            margin: 12px auto 0;
+            max-width: 280px;
             font-size: 13px;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.86);
+            line-height: 1.75;
+            color: rgba(255,255,255,0.88);
         }
 
         .payment-form-section {
             padding: 16px;
-            margin-top: -26px;
+            margin-top: -24px;
         }
 
         .payment-panel {
-            max-width: 420px;
-            margin: 0 auto 32px;
-            background: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 24px 55px rgba(24, 20, 18, 0.12);
-            padding: 24px 20px 28px;
+            width: calc(100% - 24px);
+            max-width: 360px;
+            margin: 12px auto 20px;
+            border-radius: 24px;
+            box-shadow: 0 18px 42px rgba(24, 20, 18, 0.12);
+            padding: 20px 16px 24px;
             border: 1px solid rgba(171, 139, 109, 0.12);
         }
 
@@ -108,7 +144,7 @@
         }
 
         .payment-panel p.description {
-            margin: 0 0 22px;
+            margin: 0 0 2px;
             font-size: 14px;
             line-height: 1.7;
             color: #726152;
@@ -116,17 +152,18 @@
 
         .mock-card {
             width: 100%;
-            margin: 0 auto 22px;
-            padding: 20px 18px 18px;
-            border-radius: 26px;
-            background: linear-gradient(135deg, #2e4b74 0%, #15253f 100%);
+            max-width: 340px;
+            margin: 0 auto 18px;
+            padding: 16px 14px 14px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #f18f3b 0%, #c65e13 100%);
             color: #ffffff;
-            box-shadow: 0 22px 50px rgba(14, 28, 63, 0.24);
+            box-shadow: 0 20px 42px rgba(196, 94, 19, 0.24);
             position: relative;
             overflow: hidden;
             opacity: 0;
             transform: translateY(-20px) scale(0.98);
-            animation: cardFadeIn 0.75s ease-out 0.2s forwards;
+            animation: cardFadeIn 0.8s ease-out 0.2s forwards;
         }
 
         .mock-card::before {
@@ -150,28 +187,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .mock-chip {
-            width: 48px;
-            height: 38px;
+            width: 46px;
+            height: 36px;
             border-radius: 12px;
             background: rgba(255,255,255,0.18);
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
         }
 
         .mock-card-number {
-            font-size: 16px;
-            letter-spacing: 0.28em;
+            font-size: 15px;
+            letter-spacing: 0.26em;
             margin-bottom: 16px;
         }
 
         .mock-card-data {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            font-size: 12px;
+            gap: 10px;
+            font-size: 11px;
             text-transform: uppercase;
             opacity: 0.88;
         }
@@ -184,16 +221,55 @@
             display: block;
             margin-bottom: 4px;
             font-size: 9px;
-            color: rgba(255,255,255,0.68);
-            letter-spacing: 0.14em;
+            color: rgba(255,255,255,0.72);
+            letter-spacing: 0.12em;
         }
 
-        #card-element {
+        .field-group {
+            margin-bottom: 18px;
+        }
+
+        .field-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #4f473b;
+        }
+
+        .stripe-element,
+        #postcode-input {
             border: 1px solid #e9e2d9;
-            border-radius: 20px;
-            padding: 18px 18px;
+            border-radius: 18px;
             background: #fff7f0;
-            margin-bottom: 22px;
+            padding: 16px 16px;
+            min-height: 52px;
+            box-sizing: border-box;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        #postcode-input {
+            width: 100%;
+            font-size: 15px;
+            color: #111111;
+            outline: none;
+        }
+
+        #postcode-input::placeholder {
+            color: #b1a495;
+        }
+
+        #card-number-element,
+        #card-expiry-element,
+        #card-cvc-element {
+            width: 100%;
         }
 
         #payBtn {
@@ -220,8 +296,7 @@
             margin-top: 18px;
             color: #444;
             font-size: 14px;
-            white-space: pre-wrap;
-            word-break: break-word;
+            line-height: 1.6;
             min-height: 24px;
         }
 
@@ -271,41 +346,52 @@
         }
 
         @media (max-width: 560px) {
+            .hero-top {
+                margin-top: -12vh;
+            }
+
             .payment-hero {
-                min-height: 260px;
-                padding: 24px 14px 24px;
+                min-height: 20vh;
+                padding: 14px 14px 14px;
             }
 
             .hero-headline {
-                font-size: 24px;
+                font-size: 22px;
                 max-width: 240px;
             }
 
             .hero-copy {
-                max-width: 260px;
+                max-width: 240px;
                 font-size: 13px;
             }
 
             .payment-panel {
-                margin-top: -50px;
-                padding: 22px 16px 24px;
+                margin-top: -48px;
+                padding: 20px 14px 24px;
             }
 
             .mock-card {
-                padding: 18px 16px 16px;
+                width: 90%;
+                max-width: 100%;
+                padding: 14px 12px 12px;
+                margin-bottom: 10px;
             }
 
             .mock-card-number {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .mock-card-data {
-                gap: 10px;
-                font-size: 11px;
+                gap: 1px;
             }
 
             .payment-panel h2 {
                 font-size: 20px;
+            }
+
+            .field-row {
+                display: grid;
+                grid-template-columns: 1fr;
             }
 
             #payBtn {
@@ -321,12 +407,18 @@
 </head>
 <body>
     <header class="payment-hero">
+        <div class="hero-carousel">
+            <div class="carousel-slide active" style="background-image: url('../images/slide-1.jpg');"></div>
+            <div class="carousel-slide" style="background-image: url('../images/slide-2.jpg');"></div>
+            <div class="carousel-slide" style="background-image: url('../images/slide-3.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-top">
             <img class="hero-logo" src="../images/logomini.png" alt="Photoshoot Models logo">
-            <div class="hero-brand">Photoshoot Models</div>
+            <div>
+                <div class="hero-brand">Photoshoot Models</div>
+            </div>
         </div>
-        <h1 class="hero-headline">Book your studio shoot</h1>
-        <p class="hero-copy">Confirm a deposit and secure your chosen date with a fast, mobile-friendly payment experience.</p>
     </header>
 
     <section class="payment-form-section">
@@ -347,7 +439,24 @@
                     <span><strong>Postcode</strong>SW1A 1AA</span>
                 </div>
             </div>
-            <div id="card-element"></div>
+            <div class="field-group">
+                <label class="field-label" for="card-number-element">Card number</label>
+                <div id="card-number-element" class="stripe-element"></div>
+            </div>
+            <div class="field-row">
+                <div class="field-group">
+                    <label class="field-label" for="card-expiry-element">MM / YY</label>
+                    <div id="card-expiry-element" class="stripe-element"></div>
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="card-cvc-element">CVC</label>
+                    <div id="card-cvc-element" class="stripe-element"></div>
+                </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label" for="postcode-input">Postcode</label>
+                <input id="postcode-input" type="text" placeholder="e.g. SW1A 1AA">
+            </div>
             <button id="payBtn" type="button">Place Payment On Hold</button>
             <div id="result"></div>
         </div>
@@ -356,8 +465,7 @@
     <script>
         const stripe = Stripe("<?php echo STRIPE_PUBLIC_KEY; ?>", { locale: 'en-GB' });
         const elements = stripe.elements();
-        const card = elements.create("card", {
-            hidePostalCode: false,
+        const cardNumber = elements.create("cardNumber", {
             style: {
                 base: {
                     color: '#111111',
@@ -368,15 +476,54 @@
                 invalid: { color: '#e12a50' }
             }
         });
-        card.mount("#card-element");
+        const cardExpiry = elements.create("cardExpiry", {
+            style: {
+                base: {
+                    color: '#111111',
+                    fontSize: '16px',
+                    fontFamily: 'Arial, sans-serif',
+                    '::placeholder': { color: '#a8a8a8' },
+                },
+                invalid: { color: '#e12a50' }
+            }
+        });
+        const cardCvc = elements.create("cardCvc", {
+            style: {
+                base: {
+                    color: '#111111',
+                    fontSize: '16px',
+                    fontFamily: 'Arial, sans-serif',
+                    '::placeholder': { color: '#a8a8a8' },
+                },
+                invalid: { color: '#e12a50' }
+            }
+        });
+        cardNumber.mount("#card-number-element");
+        cardExpiry.mount("#card-expiry-element");
+        cardCvc.mount("#card-cvc-element");
 
         const resultContainer = document.getElementById('result');
+        const postcodeInput = document.getElementById('postcode-input');
+
+        const carouselSlides = Array.from(document.querySelectorAll('.carousel-slide'));
+        let activeSlide = 0;
+
+        setInterval(() => {
+            carouselSlides[activeSlide].classList.remove('active');
+            activeSlide = (activeSlide + 1) % carouselSlides.length;
+            carouselSlides[activeSlide].classList.add('active');
+        }, 4500);
 
         document.getElementById("payBtn").onclick = async () => {
             resultContainer.innerHTML = '';
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
-                card: card
+                card: cardNumber,
+                billing_details: {
+                    address: {
+                        postal_code: postcodeInput.value.trim()
+                    }
+                }
             });
 
             if (error) {
@@ -392,6 +539,7 @@
                 body: JSON.stringify({
                     payment_method: paymentMethod.id,
                     totalDeposit: 50.00,
+                    postcode: postcodeInput.value.trim(),
                     firstName: "<?php echo $_POST['firstName'] ?? ''; ?>",
                     lastName: "<?php echo $_POST['lastName'] ?? ''; ?>",
                     email: "<?php echo $_POST['email'] ?? ''; ?>",
