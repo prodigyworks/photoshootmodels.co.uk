@@ -12,160 +12,166 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Booking Deposit | Photo Shoot Models</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://js.stripe.com/v3"></script>
     <style>
         body {
-            background: #f5f5f5;
+            margin: 0;
+            background: #f9f3e9;
             color: #2c2c2c;
             font-family: 'Open Sans', Arial, sans-serif;
-            margin: 0;
+            min-height: 100vh;
         }
 
         .payment-hero {
             position: relative;
-            min-height: 520px;
-            background: linear-gradient(180deg, rgba(34,34,34,0.52) 0%, rgba(34,34,34,0.52) 100%), url('../images/slide-1.jpg') center / cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             text-align: center;
-            padding: 80px 20px;
+            padding: 30px 16px 30px;
+            background: linear-gradient(180deg, rgba(15, 17, 25, 0.70) 0%, rgba(15, 17, 25, 0.18) 100%), url('../images/slide-1.jpg') center / cover no-repeat;
+            border-bottom-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            overflow: hidden;
         }
 
-        .payment-hero .hero-copy {
-            max-width: 860px;
+        .hero-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
             width: 100%;
-            color: #fff;
         }
 
-        .payment-hero .hero-label {
-            display: inline-block;
-            margin-bottom: 24px;
-            padding: 11px 28px;
-            border: 1px solid rgba(255,255,255,0.8);
-            letter-spacing: .24em;
+        .hero-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.32);
+            background: rgba(255,255,255,0.12);
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .hero-brand {
+            color: #ffffff;
             font-size: 12px;
-            text-transform: uppercase;
-            color: #fff;
-        }
-
-        .payment-hero h1 {
-            font-family: 'Dorsa', serif;
-            font-size: 58px;
-            line-height: 1.02;
             letter-spacing: .24em;
-            margin: 0 0 22px;
             text-transform: uppercase;
+            opacity: 0.95;
         }
 
-        .payment-hero p {
+        .hero-headline {
+            margin: 14px 0 10px;
+            font-size: 30px;
+            line-height: 1.05;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #ffffff;
+            max-width: 260px;
+        }
+
+        .hero-copy {
             margin: 0 auto;
-            max-width: 640px;
-            font-size: 18px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.88);
+            max-width: 290px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.86);
         }
 
         .payment-form-section {
-            padding: 100px 20px 140px;
+            padding: 16px;
+            margin-top: -26px;
         }
 
         .payment-panel {
-            max-width: 760px;
-            margin: -90px auto 0;
-            background: #fff;
+            max-width: 420px;
+            margin: 0 auto 32px;
+            background: #ffffff;
             border-radius: 28px;
-            box-shadow: 0 28px 80px rgba(33, 33, 33, 0.12);
-            padding: 46px 50px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 24px 55px rgba(24, 20, 18, 0.12);
+            padding: 24px 20px 28px;
+            border: 1px solid rgba(171, 139, 109, 0.12);
         }
 
         .payment-panel h2 {
-            margin: 0 0 14px;
-            font-size: 32px;
-            letter-spacing: 0.08em;
+            margin: 0 0 10px;
+            font-size: 22px;
+            letter-spacing: .14em;
             text-transform: uppercase;
-            color: #111111;
+            color: #1b1a18;
         }
 
         .payment-panel p.description {
-            margin: 0 0 24px;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #6c6c6c;
+            margin: 0 0 22px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #726152;
         }
 
         .mock-card {
             width: 100%;
-            max-width: 420px;
-            margin: 0 auto 28px;
-            padding: 24px 24px 20px;
-            border-radius: 28px;
-            background: linear-gradient(135deg, #1a2a48 0%, #0b1a34 100%);
-            color: #fff;
-            box-shadow: 0 24px 60px rgba(15, 31, 71, 0.24);
+            margin: 0 auto 22px;
+            padding: 20px 18px 18px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #2e4b74 0%, #15253f 100%);
+            color: #ffffff;
+            box-shadow: 0 22px 50px rgba(14, 28, 63, 0.24);
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(-24px) scale(0.98);
-            animation: cardFadeIn 0.75s ease-out 0.25s forwards;
-        } 
+            transform: translateY(-20px) scale(0.98);
+            animation: cardFadeIn 0.75s ease-out 0.2s forwards;
+        }
 
         .mock-card::before {
             content: '';
-            position: absolute; 
-            top: -20px;
-            right: -30px;
-            width: 120px;
-            height: 120px;
+            position: absolute;
+            top: -12px;
+            right: -22px;
+            width: 88px;
+            height: 88px;
             background: rgba(255,255,255,0.08);
             border-radius: 50%;
         }
 
         @keyframes cardFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-24px) scale(0.98);
-            }
-            60% {
-                opacity: 1;
-                transform: translateY(8px) scale(1.005);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(-20px) scale(0.98); }
+            60% { opacity: 1; transform: translateY(8px) scale(1.005); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .mock-card-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 26px;
+            margin-bottom: 20px;
         }
 
         .mock-chip {
-            width: 52px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.24);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+            width: 48px;
+            height: 38px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.18);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
         }
 
         .mock-card-number {
-            font-size: 18px;
-            letter-spacing: 0.3em;
-            margin-bottom: 18px;
+            font-size: 16px;
+            letter-spacing: 0.28em;
+            margin-bottom: 16px;
         }
 
         .mock-card-data {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            font-size: 13px;
+            gap: 12px;
+            font-size: 12px;
             text-transform: uppercase;
             opacity: 0.88;
         }
@@ -177,40 +183,41 @@
         .mock-card-data strong {
             display: block;
             margin-bottom: 4px;
-            font-size: 10px;
-            color: rgba(255,255,255,0.72);
-            letter-spacing: 0.16em;
+            font-size: 9px;
+            color: rgba(255,255,255,0.68);
+            letter-spacing: 0.14em;
         }
 
         #card-element {
-            border: 1px solid #e5e5e5;
-            border-radius: 18px;
-            padding: 18px 20px;
-            background: #fafafa;
-            margin-bottom: 28px;
+            border: 1px solid #e9e2d9;
+            border-radius: 20px;
+            padding: 18px 18px;
+            background: #fff7f0;
+            margin-bottom: 22px;
         }
 
         #payBtn {
             width: 100%;
-            min-height: 56px;
+            min-height: 52px;
             border: none;
-            border-radius: 14px;
-            background: #111111;
+            border-radius: 18px;
+            background: #e66023;
             color: #ffffff;
             font-size: 15px;
             font-weight: 700;
-            letter-spacing: .12em;
+            letter-spacing: .14em;
             text-transform: uppercase;
             cursor: pointer;
             transition: background 0.2s ease;
+            box-shadow: 0 8px 18px rgba(230, 96, 35, 0.22);
         }
 
         #payBtn:hover {
-            background: #333333;
+            background: #d64d14;
         }
 
         #result {
-            margin-top: 24px;
+            margin-top: 18px;
             color: #444;
             font-size: 14px;
             white-space: pre-wrap;
@@ -220,38 +227,38 @@
 
         .success-box {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             align-items: flex-start;
-            padding: 28px;
+            padding: 22px;
             border-radius: 22px;
             background: #f7fbff;
             border: 1px solid #cfe7ff;
-            box-shadow: 0 16px 35px rgba(30, 45, 75, 0.08);
+            box-shadow: 0 16px 32px rgba(30, 45, 75, 0.08);
         }
 
         .success-icon {
             flex-shrink: 0;
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: #0b74e1;
             color: #ffffff;
             display: grid;
             place-items: center;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
         }
 
         .success-copy h3 {
-            margin: 0 0 10px;
-            font-size: 22px;
+            margin: 0 0 8px;
+            font-size: 18px;
             color: #111111;
         }
 
         .success-copy p {
             margin: 0;
-            font-size: 15px;
-            line-height: 1.8;
+            font-size: 14px;
+            line-height: 1.7;
             color: #4f4f4f;
         }
 
@@ -263,48 +270,46 @@
             color: #8a1f1f;
         }
 
-        @media (max-width: 840px) {
-            .payment-panel {
-                margin: -70px 0 0;
-                padding: 36px 28px;
-            }
-
-            .payment-hero {
-                min-height: 420px;
-                padding: 60px 18px;
-            }
-
-            .payment-hero h1 {
-                font-size: 44px;
-            }
-        }
-
         @media (max-width: 560px) {
             .payment-hero {
-                min-height: 340px;
-                padding: 42px 18px;
+                min-height: 260px;
+                padding: 24px 14px 24px;
             }
 
-            .payment-hero h1 {
-                font-size: 32px;
+            .hero-headline {
+                font-size: 24px;
+                max-width: 240px;
+            }
+
+            .hero-copy {
+                max-width: 260px;
+                font-size: 13px;
             }
 
             .payment-panel {
-                margin: -60px 0 0;
-                padding: 28px 20px;
+                margin-top: -50px;
+                padding: 22px 16px 24px;
             }
 
             .mock-card {
-                padding: 20px 18px 18px;
+                padding: 18px 16px 16px;
             }
 
             .mock-card-number {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .mock-card-data {
-                gap: 12px;
-                font-size: 12px;
+                gap: 10px;
+                font-size: 11px;
+            }
+
+            .payment-panel h2 {
+                font-size: 20px;
+            }
+
+            #payBtn {
+                min-height: 50px;
             }
 
             .success-box {
@@ -316,22 +321,22 @@
 </head>
 <body>
     <header class="payment-hero">
-        <div class="hero-copy">
-            <span class="hero-label">London Studio Visit</span>
-            <h1>Photo Shoot Models</h1>
-            <p>Expert photographers and stylists dedicated to capturing your potential.</p>
+        <div class="hero-top">
+            <img class="hero-logo" src="../images/logomini.png" alt="Photoshoot Models logo">
+            <div class="hero-brand">Photoshoot Models</div>
         </div>
+        <h1 class="hero-headline">Book your studio shoot</h1>
+        <p class="hero-copy">Confirm a deposit and secure your chosen date with a fast, mobile-friendly payment experience.</p>
     </header>
 
     <section class="payment-form-section">
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
             <p class="description">Secure your studio booking with a £50 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
-
             <div class="mock-card">
                 <div class="mock-card-row">
                     <div>
-                        <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.88;">Photo Shoot Models</div>
+                        <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; opacity:.86;">Photo Shoot Models</div>
                     </div>
                     <div class="mock-chip"></div>
                 </div>
@@ -342,7 +347,6 @@
                     <span><strong>Postcode</strong>SW1A 1AA</span>
                 </div>
             </div>
-
             <div id="card-element"></div>
             <button id="payBtn" type="button">Place Payment On Hold</button>
             <div id="result"></div>
@@ -399,7 +403,7 @@
 
             if (!response.ok) {
                 resultContainer.innerHTML = '<div class="error-box">' +
-                    '<strong>Server error:</strong> Please try again later.</n' +
+                    '<strong>Server error:</strong> Please try again later.' +
                     '</div>';
                 return;
             }
