@@ -109,7 +109,10 @@
             box-shadow: 0 24px 60px rgba(15, 31, 71, 0.24);
             position: relative;
             overflow: hidden;
-        }
+            opacity: 0;
+            transform: translateY(-24px) scale(0.98);
+            animation: cardFadeIn 0.75s ease-out 0.25s forwards;
+        } 
 
         .mock-card::before {
             content: '';
@@ -120,6 +123,21 @@
             height: 120px;
             background: rgba(255,255,255,0.08);
             border-radius: 50%;
+        }
+
+        @keyframes cardFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-24px) scale(0.98);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(8px) scale(1.005);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .mock-card-row {
