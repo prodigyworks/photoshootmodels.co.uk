@@ -502,6 +502,7 @@
         cardExpiry.mount("#card-expiry-element");
         cardCvc.mount("#card-cvc-element");
 
+        const payButton = document.getElementById('payBtn');
         const resultContainer = document.getElementById('result');
         const postcodeInput = document.getElementById('postcode-input');
 
@@ -558,13 +559,16 @@
 
             const data = await response.json();
             resultContainer.innerHTML =
-                '<div class="success-box">' +
+                '<div class="success-box" id="success-message">' +
                     '<div class="success-icon">✓</div>' +
                     '<div class="success-copy">' +
                         '<h3>Thank you for your payment</h3>' +
                         '<p>Your deposit is now secured. You will receive a confirmation email shortly with the booking details and next steps.</p>' +
                     '</div>' +
                 '</div>';
+
+            payButton.style.display = 'none';
+            document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
         };
     </script>
 </body>
