@@ -358,6 +358,29 @@
             color: #4f4f4f;
         }
 
+        .success-button {
+            margin-top: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 16px;
+            border: none;
+            background: #0b74e1;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .success-button:hover {
+            background: #095fbb;
+            transform: translateY(-1px);
+        }
+
         .error-box {
             padding: 18px 20px;
             border-radius: 18px;
@@ -606,10 +629,17 @@
                     '<div class="success-copy">' +
                         '<h3>Thank you for your payment</h3>' +
                         '<p>Your deposit is now secured. You will receive a confirmation email shortly with the booking details and next steps.</p>' +
+                        '<button type="button" class="success-button" id="return-to-booking">Return to booking</button>' +
                     '</div>' +
                 '</div>';
 
             if (paySpinner) paySpinner.style.display = 'none';
+            const returnButton = document.getElementById('return-to-booking');
+            if (returnButton) {
+                returnButton.addEventListener('click', () => {
+                    window.location.href = 'https://booking.photoshootmodels.co.uk/payment-success?status=ok';
+                });
+            }
             // hide the button after success
             payButton.style.display = 'none';
             document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
