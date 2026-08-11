@@ -637,7 +637,7 @@
             const returnButton = document.getElementById('return-to-booking');
             if (returnButton) {
                 returnButton.addEventListener('click', () => {
-                    window.opener.postMessage('payment_success', '*');
+                    window.parent.postMessage('payment_success', '*');
                     window.close();
                 });
             }
