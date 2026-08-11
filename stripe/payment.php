@@ -637,7 +637,7 @@
             const returnButton = document.getElementById('return-to-booking');
             if (returnButton) {
                 returnButton.addEventListener('click', () => {
-                    window.location.href = 'https://booking.photoshootmodels.co.uk/payment-success?status=ok';
+                    window.location.href = 'https://booking.photoshootmodels.co.uk';
                 });
             }
             // hide the button after success
