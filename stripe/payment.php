@@ -126,8 +126,8 @@
         }
 
         .payment-panel {
-            width: calc(100% - 24px);
-            max-width: 360px;
+            width: min(100%, 520px);
+            max-width: 520px;
             margin: 12px auto 20px;
             border-radius: 24px;
             box-shadow: 0 18px 42px rgba(24, 20, 18, 0.12);
