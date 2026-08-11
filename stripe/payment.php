@@ -637,7 +637,8 @@
             const returnButton = document.getElementById('return-to-booking');
             if (returnButton) {
                 returnButton.addEventListener('click', () => {
-                    window.location.href = 'https://booking.photoshootmodels.co.uk';
+                    window.opener.postMessage('payment_success', '*');
+                    window.close();
                 });
             }
             // hide the button after success
