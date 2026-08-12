@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Booking Deposit | Photo Shoot Models</title>
+    <title>Sale | Photo Shoot Models</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://js.stripe.com/v3"></script>
     <style>
@@ -468,7 +468,7 @@
     <section class="payment-form-section">
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
-            <p class="description">Secure your studio booking with a £50 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
+            <p class="description">Enter your card details below to pay through Stripe.</p>
             <div class="mock-card">
                 <div class="mock-card-row">
                     <div>
@@ -591,30 +591,18 @@
             // proceed to server hold
             if (btnText) btnText.textContent = 'Processing...';
 
-            const response = await fetch('create_hold.php', {
+            const response = await fetch('salepayment.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     payment_method: paymentMethod.id,
-                    totalDeposit: 50.00,
-                    postcode: postcodeInput.value.trim(),
-                    firstName: "<?php echo $_POST['firstName'] ?? ''; ?>",
-                    lastName: "<?php echo $_POST['lastName'] ?? ''; ?>",
-                    email: "<?php echo $_POST['email'] ?? ''; ?>",
-                    phone: "<?php echo $_POST['phone'] ?? ''; ?>",
-                    date: "<?php echo $_POST['date'] ?? ''; ?>",
-                    time: "<?php echo $_POST['time'] ?? ''; ?>",
-                    address: "<?php echo $_POST['address'] ?? ''; ?>",
-                    notes: "<?php echo $_POST['notes'] ?? ''; ?>",
-                    age: "<?php echo $_POST['age'] ?? ''; ?>",
-                    gender: "<?php echo $_POST['gender'] ?? ''; ?>",
-                    parentName: "<?php echo $_POST['parentName'] ?? ''; ?>"
+                    bookingid: "<?php echo $_POST['booking_id'] ?? ''; ?>"
                 })
             });
 
             if (!response.ok) {
                 if (paySpinner) paySpinner.style.display = 'none';
-                if (btnText) btnText.textContent = 'Place Payment On Hold';
+                if (btnText) btnText.textContent = 'Confirm Payment';
                 payButton.disabled = false;
                 resultContainer.innerHTML = '<div class="error-box">' +
                     '<strong>Server error:</strong> Please try again later.' +
@@ -628,8 +616,8 @@
                     '<div class="success-icon">✓</div>' +
                     '<div class="success-copy">' +
                         '<h3>Thank you for your payment</h3>' +
-                        '<p>Your deposit is now secured. You will receive a confirmation email shortly with the booking details and next steps.</p>' +
-                        '<button type="button" class="success-button" id="return-to-booking">Return to booking</button>' +
+                        '<p>Your payment has been successfully received, and your package at Photo Shoot Models Studio is now fully secured.</p>' +
+                        '<button type="button" class="success-button" id="return-to-booking">Return to studio</button>' +
                     '</div>' +
                 '</div>';
 

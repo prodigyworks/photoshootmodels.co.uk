@@ -20,15 +20,15 @@
     }
 
     // Extract fields
-    $firstName = $input['firstName'] ?? '';
-    $lastName  = $input['lastName'] ?? '';
-    $email     = $input['email'] ?? '';
-    $phone     = $input['phone'] ?? '';
-    $gender    = $input['gender'] ?? '';
-    $address   = $input['address'] ?? '';
-    $notes     = $input['notes'] ?? '';
-    $date      = $input['date'] ?? '';
-    $time      = $input['time'] ?? '';
+    $bookingid = $input['bookingId'] ?? '';
+    $amount = $input['amount'] ?? 0;
+    $discount = $input['discount'] ?? 0;
+    $total = $input['total'] ?? 0;
+    $firstname = $input['firstName'] ?? '';
+    $lastname = $input['lastName'] ?? '';
+    $date = new DateTime()->format("d/m/Y H:i");
+ 
+    $total = $total * 100;
 
     // Create Stripe Checkout Session
     try {
@@ -38,10 +38,10 @@
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'gbp',
-                    'unit_amount' => 5000, // £50 deposit
+                    'unit_amount' => $total, // £50 deposit
                     'product_data' => [
-                        'name' => 'Photo Shoot Deposit',
-                        'description' => "$date @ $time",
+                        'name' => 'Photo Shoot Payment',
+                        'description' => "$firstname $lastname on $date",
                     ],
                 ],
                 'quantity' => 1,
