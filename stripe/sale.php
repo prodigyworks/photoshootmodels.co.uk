@@ -467,7 +467,7 @@
 
     <section class="payment-form-section">
         <div class="payment-panel">
-            <h2>Booking Deposit</h2>
+            <h2>Package Payment</h2>
             <p class="description">Enter your card details below to pay through Stripe.</p>
             <div class="mock-card">
                 <div class="mock-card-row">
@@ -501,7 +501,7 @@
                 <label class="field-label" for="postcode-input">Postcode</label>
                 <input id="postcode-input" type="text" placeholder="e.g. SW1A 1AA">
             </div>
-            <button id="payBtn" type="button"><span class="btn-text">Place Payment On Hold</span><span id="paySpinner" class="spinner" aria-hidden="true"></span></button>
+            <button id="payBtn" type="button"><span class="btn-text">Confirm Payment</span><span id="paySpinner" class="spinner" aria-hidden="true"></span></button>
             <div id="result"></div>
         </div>
     </section>
