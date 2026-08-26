@@ -605,7 +605,7 @@
                     date: "<?php echo $_POST['date'] ?? ''; ?>",
                     time: "<?php echo $_POST['time'] ?? ''; ?>",
                     address: "<?php echo $_POST['address'] ?? ''; ?>",
-                    notes: "<?php echo $_POST['notes'] ?? ''; ?>",
+                    notes: "<?php echo addslashes(str_replace(["\r\n", "\r", "\n"], "\\n", $_POST['notes'] ?? '')); ?>",
                     age: "<?php echo $_POST['age'] ?? ''; ?>",
                     gender: "<?php echo $_POST['gender'] ?? ''; ?>",
                     parentName: "<?php echo $_POST['parentName'] ?? ''; ?>"
