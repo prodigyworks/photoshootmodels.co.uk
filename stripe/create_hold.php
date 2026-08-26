@@ -31,10 +31,16 @@
             'metadata' => [
                 'firstName' => $input['firstName'],
                 'lastName' => $input['lastName'],
+                'parentName' => $input['parentName'],
                 'email' => $input['email'],
+                'age' =>  $input['age'],
+                'postcode' => $input['postcode'],
+                'gender' => $input['gender'],
                 'phone' => $input['phone'],
                 'date' => $input['date'],
                 'time' => $input['time'],
+                'address' => $input['address'],
+                'notes' => $input['notes'],
                 'deposit' => $deposit
             ]
         ]);
