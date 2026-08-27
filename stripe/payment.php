@@ -527,7 +527,7 @@
 
             .payment-form-section {
                 padding: 0px ! important;
-                padding-right: 32px;
+                padding-right: 32px ! important;
             }
 
 
