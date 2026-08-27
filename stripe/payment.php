@@ -143,7 +143,7 @@
             color: #1b1a18;
         }
 
-        .payment-panel p.description {
+        .payment-panel .description {
             margin: 0 0 2px;
             font-size: 14px;
             line-height: 1.7;
