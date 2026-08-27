@@ -448,8 +448,8 @@
             }
         }
         .description p {
-            padding-top: 2px;
-            padding-bottom: 2px;
+            padding-top: 3px;
+            padding-bottom: 3px;
         }
     </style>
 </head>
