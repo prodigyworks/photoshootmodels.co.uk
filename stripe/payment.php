@@ -18,7 +18,7 @@
     <script src="https://js.stripe.com/v3"></script>
     <style>
         .termsandconditions p {
-            font-size: 11px;
+            font-size: 12px;
             line-height: 1.3;
             font-family: 'Courier New', Courier, monospace;
         }
