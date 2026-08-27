@@ -467,7 +467,6 @@
 
     <section class="payment-form-section">
         <div class="payment-panel">
-            <h2>Booking Deposit</h2>
             <div class="description">
                 <h2>SANDHURST DIGITAL STUDIOS LTD</h2>
                 <h4>£50 Deposit - Terms & Conditions</h4>
