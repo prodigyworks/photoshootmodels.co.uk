@@ -469,8 +469,8 @@
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
             <div class="description">
-                <h3>SANDHURST DIGITAL STUDIOS LTD</h3>
-                <h4>>£50 Deposit - Terms & Conditions</h4>
+                <h2>SANDHURST DIGITAL STUDIOS LTD</h2>
+                <h4>£50 Deposit - Terms & Conditions</h4>
                 <p>Company No. 11664348</p>
                 <p>By paying the £50 deposit to Sandhurst Digital Studios Ltd (Company No. 11664348), you agree to the following: </p>
                 <p>The £50 deposit is pre-authorised only and secures your appointment, design work and production time. </p>
