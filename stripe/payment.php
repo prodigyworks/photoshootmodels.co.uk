@@ -448,8 +448,8 @@
             }
         }
         .description p {
-            padding-top: 3px;
-            padding-bottom: 3px;
+            padding-top: 4px;
+            padding-bottom: 4px;
             margin-top: 0px;
             margin-bottom: 0px;
         }
