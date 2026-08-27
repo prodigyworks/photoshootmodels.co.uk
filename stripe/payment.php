@@ -447,6 +447,10 @@
                 align-items: stretch;
             }
         }
+        .description p {
+            margin-top: 2px;
+            margin-buttom: 2px;
+        }
     </style>
 </head>
 <body>
@@ -477,7 +481,7 @@
                 <p>Your booking is confirmed once the deposit has been received.  </p>
                 <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £50 deposit will be retained to cover administration, and reserved production capacity.  </p>
                 <p>You will be given the opportunity to rebook automatically on 2 occasions before the £50 deposit is forfeited.  </p>
-                <p>Your statutory rights are not affected.  </p><br>
+                <p>Your statutory rights are not affected.  </p>
                 <p><b>By paying the £50 deposit, you confirm that you have read and agree to these terms and conditions.</b></p>
             </div>
             <div class="mock-card">
