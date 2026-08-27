@@ -448,8 +448,8 @@
             }
         }
         .description p {
-            margin-top: 2px;
-            margin-buttom: 2px;
+            padding-top: 2px;
+            padding-bottom: 2px;
         }
     </style>
 </head>
