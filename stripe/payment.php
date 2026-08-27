@@ -525,6 +525,12 @@
                 margin-top: -12vh;
             }
 
+            .payment-form-section {
+                padding: 0px ! important;
+                padding-right: 32px;
+            }
+
+
             .payment-hero {
                 min-height: 20vh;
                 padding: 14px 14px 14px;
