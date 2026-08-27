@@ -17,6 +17,137 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://js.stripe.com/v3"></script>
     <style>
+        .termsandconditions p {
+            font-size: 11px;
+            line-height: 1.3;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .termsandconditions h2 {
+            margin: 0px ! important;
+            padding: 0px ! important;
+        }
+        .termsandconditions {
+            margin: 4px 0 8px;
+            padding: 20px;
+            background: #fafafa;
+            border: 1px solid #ddd5cc;
+            border-radius: 18px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .termsandconditions-header {
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #e5ddd5;
+            text-align: center;
+        }
+
+        .termsandconditions-header h2 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            padding:0px;
+            letter-spacing: .12em;
+            color: #2c2926;
+        }
+
+        .termsandconditions-header h4 {
+            margin: 0 0 4px;
+            font-size: 13px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #a34a19;
+        }
+
+        .termsandconditions-header p {
+            margin: 0;
+            font-size: 11px;
+            color: #8a8178;
+        }
+
+        .terms-content {
+            max-height: 230px;
+            overflow-y: auto;
+            padding-right: 10px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #5c554e;
+        }
+
+        .terms-content p {
+            margin: 0 0 12px;
+        }
+
+        .terms-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .terms-content strong {
+            color: #292623;
+        }
+
+        /* Custom scrollbar */
+        .terms-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .terms-content::-webkit-scrollbar-track {
+            background: #eee9e3;
+            border-radius: 10px;
+        }
+
+        .terms-content::-webkit-scrollbar-thumb {
+            background: #c8bbae;
+            border-radius: 10px;
+        }
+
+        .terms-agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 18px 0 20px;
+            padding: 16px;
+            background: #fffaf5;
+            border: 1px solid #e5d8ca;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: border-color .2s ease, background .2s ease;
+        }
+
+        .terms-agreement:hover {
+            background: #fff7ef;
+            border-color: #d5bda7;
+        }
+
+        .terms-agreement input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin: 1px 0 0;
+            accent-color: #e66023;
+            cursor: pointer;
+        }
+
+        .terms-agreement label, .terms-agreement span {
+            font-size: 12px ! important;
+            line-height: 1.4 ! important;
+            cursor: pointer;
+            color: #403a34;
+        }
+
+        .terms-agreement strong {
+            color: #211f1d;
+        }
+
+        #payBtn:disabled {
+            background: #cfc8c1;
+            box-shadow: none;
+            cursor: not-allowed;
+            opacity: 0.75;
+        }
+
+        #payBtn:disabled:hover {
+            background: #cfc8c1;
+        }
         body {
             margin: 0;
             background: #f9f3e9;
@@ -143,10 +274,10 @@
             color: #1b1a18;
         }
 
-        .payment-panel .description {
+        .payment-panel p.description {
             margin: 0 0 2px;
             font-size: 14px;
-            line-height: 18px;
+            line-height: 1.7;
             color: #726152;
         }
 
@@ -447,12 +578,6 @@
                 align-items: stretch;
             }
         }
-        .description p {
-            padding-top: 4px;
-            padding-bottom: 4px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
     </style>
 </head>
 <body>
@@ -473,19 +598,8 @@
 
     <section class="payment-form-section">
         <div class="payment-panel">
-            <div class="description">
-                <center><h2>SANDHURST DIGITAL STUDIOS LTD</h2></center>
-                <center><h4>£50 Deposit - Terms & Conditions</h4></center>
-                <center><p>Company No. 11664348</p></center>
-                <p>By paying the £50 deposit to Sandhurst Digital Studios Ltd (Company No. 11664348), you agree to the following: </p>
-                <p>The £50 deposit is pre-authorised only and secures your appointment, design work and production time. </p>
-                <p>The £50 deposit will be allocated back to your account automatically within 14 days.  </p>
-                <p>Your booking is confirmed once the deposit has been received.  </p>
-                <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £50 deposit will be retained to cover administration, and reserved production capacity.  </p>
-                <p>You will be given the opportunity to rebook automatically on 2 occasions before the £50 deposit is forfeited.  </p>
-                <p>Your statutory rights are not affected.  </p>
-                <p><b>By paying the £50 deposit, you confirm that you have read and agree to these terms and conditions.</b></p>
-            </div>
+            <h2>Booking Deposit</h2>
+            <p class="description">Secure your studio booking with a £50 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
             <div class="mock-card">
                 <div class="mock-card-row">
                     <div>
@@ -518,7 +632,29 @@
                 <label class="field-label" for="postcode-input">Postcode</label>
                 <input id="postcode-input" type="text" placeholder="e.g. SW1A 1AA">
             </div>
-            <button id="payBtn" type="button"><span class="btn-text">Place Payment On Hold</span><span id="paySpinner" class="spinner" aria-hidden="true"></span></button>
+            <div class="termsandconditions">
+                <center><h2>SANDHURST DIGITAL STUDIOS LTD</h2></center>
+                <center><h4>£50 Deposit - Terms & Conditions</h4></center>
+                <center><p>Company No. 11664348</p></center>
+                <p>By paying the £50 deposit to Sandhurst Digital Studios Ltd (Company No. 11664348), you agree to the following: </p>
+                <p>The £50 deposit is pre-authorised only and secures your appointment, design work and production time. </p>
+                <p>The £50 deposit will be allocated back to your account automatically within 14 days.  </p>
+                <p>Your booking is confirmed once the deposit has been received.  </p>
+                <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £50 deposit will be retained to cover administration, and reserved production capacity.  </p>
+                <p>You will be given the opportunity to rebook automatically on 2 occasions before the £50 deposit is forfeited.  </p>
+                <p>Your statutory rights are not affected.  </p>
+                <p><b>By paying the £50 deposit, you confirm that you have read and agree to these terms and conditions.</b></p>
+
+                <label class="terms-agreement" for="terms-checkbox">
+                    <input type="checkbox" id="terms-checkbox">
+                    <span>
+                        I confirm that I have read and understood the
+                        <strong>£50 Deposit Terms &amp; Conditions</strong> above and
+                        agree to be bound by them.
+                    </span>
+                </label>
+            </div>
+            <button id="payBtn" disabled type="button"><span class="btn-text">Place Payment On Hold</span><span id="paySpinner" class="spinner" aria-hidden="true"></span></button>
             <div id="result"></div>
         </div>
     </section>
@@ -577,6 +713,14 @@
             carouselSlides[activeSlide].classList.add('active');
         }, 4500);
 
+        document.getElementById("terms-checkbox").onclick = function() {
+            if (document.getElementById("terms-checkbox").checked) {
+                document.getElementById("payBtn").disabled = false; 
+
+            } else {
+                document.getElementById("payBtn").disabled = true; 
+            }
+        };
         document.getElementById("payBtn").onclick = async () => {
             resultContainer.innerHTML = '';
             // show spinner and disable button while verifying
