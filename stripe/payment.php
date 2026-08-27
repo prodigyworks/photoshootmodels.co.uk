@@ -146,7 +146,7 @@
         .payment-panel .description {
             margin: 0 0 2px;
             font-size: 14px;
-            line-height: 16px;
+            line-height: 18px;
             color: #726152;
         }
 
