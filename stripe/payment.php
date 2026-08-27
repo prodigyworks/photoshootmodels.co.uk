@@ -479,7 +479,7 @@
                 <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £50 deposit will be retained to cover administration, and reserved production capacity.  </p>
                 <p>>You will be given the opportunity to rebook automatically on 2 occasions before the £50 deposit is forfeited.  </p>
                 <p>Your statutory rights are not affected.  </p><br>
-                <p><b>By paying the £50 deposit, you confirm that y </p>ou have read and agree to these terms and conditions.</b></p>
+                <p><b>By paying the £50 deposit, you confirm that you have read and agree to these terms and conditions.</b></p>
             </div>
             <div class="mock-card">
                 <div class="mock-card-row">
