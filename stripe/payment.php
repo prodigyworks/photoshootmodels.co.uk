@@ -468,7 +468,19 @@
     <section class="payment-form-section">
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
-            <p class="description">Secure your studio booking with a £50 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
+            <div class="description">
+                <h3>SANDHURST DIGITAL STUDIOS LTD</h3>
+                <h4>>£50 Deposit - Terms & Conditions</h4>
+                <p>Company No. 11664348</p>
+                <p>By paying the £50 deposit to Sandhurst Digital Studios Ltd (Company No. 11664348), you agree to the following: </p>
+                <p>The £50 deposit is pre-authorised only and secures your appointment, design work and production time. </p>
+                <p>The £50 deposit will be allocated back to your account automatically within 14 days.  </p>
+                <p>Your booking is confirmed once the deposit has been received.  </p>
+                <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £50 deposit will be retained to cover administration, and reserved production capacity.  </p>
+                <p>>You will be given the opportunity to rebook automatically on 2 occasions before the £50 deposit is forfeited.  </p>
+                <p>Your statutory rights are not affected.  </p><br>
+                <p><b>By paying the £50 deposit, you confirm that y </p>ou have read and agree to these terms and conditions.</b></p>
+            </div>
             <div class="mock-card">
                 <div class="mock-card-row">
                     <div>
@@ -637,7 +649,7 @@
             const returnButton = document.getElementById('return-to-booking');
             if (returnButton) {
                 returnButton.addEventListener('click', () => {
-                    window.parent.postMessage('payment_success', '*');
+                    window.parent.postMessage('payment_success', data.payment_intent);
                     window.close();
                 });
             }
