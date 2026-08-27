@@ -450,6 +450,8 @@
         .description p {
             padding-top: 3px;
             padding-bottom: 3px;
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
     </style>
 </head>
