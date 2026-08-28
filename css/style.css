@@ -409,6 +409,33 @@ header .book-photoshoot-btn {
   padding-bottom: 58px;
   padding-top: 20px;
 }
+.js .scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.js section.content .box-1,
+.js section.content .box-2,
+.js section.content .box-3,
+.js section.content .box-4 {
+  transition-duration: 0.55s;
+  transition-delay: 0.08s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .scroll-reveal,
+  .js section.content .box-1,
+  .js section.content .box-2,
+  .js section.content .box-3,
+  .js section.content .box-4 {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 .page-1 .content {
   padding-top: 0;
 }
@@ -1317,7 +1344,7 @@ footer {
 }
 
 .book-photoshoot-btn {
-  display: inline-block;
+  display: block;
   float: right;
   clear: right;
   background: #e12a50;

@@ -1,8 +1,41 @@
+document.documentElement.classList.add('js');
+
 $(function(){
     var currentYear = (new Date).getFullYear();
         $(document).ready(function() {
         $("#copyright-year").text( (new Date).getFullYear() );
     });
+
+    var revealTargets = document.querySelectorAll(
+        'section.content > .container, section.content > .bg-1, ' +
+        'section.content .box-1, section.content .box-2, ' +
+        'section.content .box-3, section.content .box-4'
+    );
+
+    revealTargets.forEach(function(target) {
+        target.classList.add('scroll-reveal');
+    });
+
+    if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach(function(target) {
+            revealObserver.observe(target);
+        });
+    } else {
+        revealTargets.forEach(function(target) {
+            target.classList.add('is-visible');
+        });
+    }
 // IPad/IPhone
 	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
 	ua = navigator.userAgent,
