@@ -355,6 +355,30 @@ h1 a {
   right: 0;
   bottom: -18px;
 }
+header .bg-1 .grid_12 {
+  position: relative;
+  min-height: 145px;
+}
+header h1 {
+  position: absolute;
+  top: -12px;
+  right: 0;
+  float: none;
+  z-index: 12;
+}
+header h1 a {
+  top: 0;
+  bottom: auto;
+}
+header .book-photoshoot-btn {
+  position: absolute;
+  top: 105px;
+  right: 0;
+  float: none;
+  clear: none;
+  margin: 0;
+  z-index: 13;
+}
 .bg-1 {
   background: #2c2c2c;
 }
@@ -1116,6 +1140,24 @@ footer {
   }
 }
 @media only screen and (max-width: 767px) {
+  header .bg-1 .grid_12 {
+    min-height: 235px;
+  }
+  header h1 {
+    height: 0;
+    width: 100%;
+    top: 55px;
+  }
+  header h1 a {
+    top: 0;
+    bottom: auto;
+    left: auto;
+    right: 0;
+    width: 150px;
+  }
+  header .book-photoshoot-btn {
+    top: 175px;
+  }
   h1 {
     height: 0;
     width: 100%;
@@ -1175,8 +1217,10 @@ footer {
 }
 
 /* Book Your Photoshoot Button */
-.sf-menu .book-photoshoot-btn {
+.book-photoshoot-btn {
   display: inline-block;
+  float: right;
+  clear: right;
   background: #e12a50;
   color: #fff !important;
   padding: 10px 20px;
@@ -1184,11 +1228,11 @@ footer {
   font-weight: bold;
   font-size: 12px;
   text-transform: uppercase;
-  margin-left: 15px;
+  margin: 8px 0 15px;
   transition: all 0.4s ease;
 }
 
-.sf-menu .book-photoshoot-btn:hover {
+.book-photoshoot-btn:hover {
   background: #c71d42;
   color: #fff !important;
   text-decoration: none;
