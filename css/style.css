@@ -1217,6 +1217,105 @@ footer {
 }
 
 /* Book Your Photoshoot Button */
+.psm-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+}
+
+.psm-modal-content {
+  width: 92%;
+  max-width: 480px;
+  background: #fff;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+.psm-modal-content h2 {
+  padding: 4px;
+}
+
+.psm-modal-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.psm-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 30px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.listing li {
+  margin-left: 20px;
+  list-style: circle;
+  padding: 9px;
+  font-weight: bold;
+}
+
+#psmModalTitle {
+  color: #000;
+}
+
+.fulldescription {
+  display: none;
+}
+
+#psmModalText {
+  color: #111;
+}
+
+.complaints-policy ul,
+.privacy-policy ul {
+  margin-bottom: 20px;
+}
+
+.complaints-policy h2,
+.privacy-policy h2 {
+  line-height: 28px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.complaints-policy-intro,
+.privacy-policy-intro,
+.privacy-policy-intro h2,
+.privacy-policy-intro p {
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .psm-modal-content {
+    width: 94%;
+    margin: 30px auto;
+    padding: 18px;
+    border-radius: 8px;
+  }
+}
+
 .book-photoshoot-btn {
   display: inline-block;
   float: right;
