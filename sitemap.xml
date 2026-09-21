@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://www.photoshootmodels.co.uk/</loc>
+       <lastmod>2026-08-28T13:51:25+00:00</lastmod>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://www.photoshootmodels.co.uk/index.html</loc>
+       <lastmod>2026-08-28T13:51:25+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.photoshootmodels.co.uk/about-us.html</loc>
+       <lastmod>2026-08-28T13:48:51+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.photoshootmodels.co.uk/contact-us.html</loc>
+       <lastmod>2026-08-28T13:48:52+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.photoshootmodels.co.uk/privacy-policy.html</loc>
+       <lastmod>2026-08-28T13:51:25+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.photoshootmodels.co.uk/complaints-policy.html</loc>
+       <lastmod>2026-08-28T13:51:23+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+</urlset>
