@@ -804,8 +804,11 @@
             const returnButton = document.getElementById('return-to-booking');
             if (returnButton) {
                 returnButton.addEventListener('click', () => {
-                    window.parent.postMessage('payment_success', data.payment_intent);
-                    window.close();
+                    window.parent.postMessage({
+                        type: 'payment_success',
+                        intent: data.payment_intent
+                    }, '*');
+                    window.close(); 
                 });
             }
             // hide the button after success
