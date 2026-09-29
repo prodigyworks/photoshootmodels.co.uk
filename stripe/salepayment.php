@@ -38,7 +38,7 @@
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'gbp',
-                    'unit_amount' => $total, // £50 deposit
+                    'unit_amount' => $total, // £20 deposit
                     'product_data' => [
                         'name' => 'Photo Shoot Payment',
                         'description' => "$firstname $lastname on $date",

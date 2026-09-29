@@ -20,7 +20,7 @@
 <img src="https://www.photoshootmodels.co.uk/images/logo-transparent.png" alt="Photo Shoot Models" style="height:60px; margin-bottom:30px;">
 
 <h1>PAYMENT SUCCESSFUL</h1>
-<p>Thank you — your £50 deposit has been received.</p>
+<p>Thank you — your £20 deposit has been received.</p>
 <p>Your booking is now confirmed. Our team will contact you shortly with your final details and preparation guide.</p>
 
 <a href="https://booking.photoshootmodels.co.uk" class="button">RETURN TO HOMEPAGE</a>

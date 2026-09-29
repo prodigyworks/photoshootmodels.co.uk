@@ -605,7 +605,7 @@
     <section class="payment-form-section">
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
-            <p class="description">Secure your studio booking with a £50 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
+            <p class="description">Secure your studio booking with a £25 deposit. Enter your card details below and place the payment on hold safely through Stripe.</p>
             <div class="mock-card">
                 <div class="mock-card-row">
                     <div>
@@ -640,22 +640,22 @@
             </div>
             <div class="termsandconditions">
                 <center><h2>SANDHURST DIGITAL STUDIOS LTD</h2></center>
-                <center><h4>£50 Deposit - Terms & Conditions</h4></center>
+                <center><h4>£25 Deposit - Terms & Conditions</h4></center>
                 <center><p>Company No. 11664348</p></center>
-                <p>By paying the £50 deposit to Sandhurst Digital Studios Ltd (Company No. 11664348), you agree to the following: </p>
-                <p>The £50 deposit is pre-authorised only and secures your appointment, design work and production time. </p>
-                <p>The £50 deposit will be allocated back to your account automatically within 14 days.  </p>
+                <p>By paying the £25 deposit to Sandhurst Digital Studios Ltd (Company No. 11664348), you agree to the following: </p>
+                <p>The £25 deposit is pre-authorised only and secures your appointment, design work and production time. </p>
+                <p>The £25 deposit will be allocated back to your account automatically within 14 days.  </p>
                 <p>Your booking is confirmed once the deposit has been received.  </p>
-                <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £50 deposit will be retained to cover administration, and reserved production capacity.  </p>
-                <p>You will be given the opportunity to rebook automatically on 2 occasions before the £50 deposit is forfeited.  </p>
+                <p>If you cancel your booking with less than 24 hours notice, or do not attend your appointment, the £25 deposit will be retained to cover administration, and reserved production capacity.  </p>
+                <p>You will be given the opportunity to rebook automatically on 2 occasions before the £25 deposit is forfeited.  </p>
                 <p>Your statutory rights are not affected.  </p>
-                <p><b>By paying the £50 deposit, you confirm that you have read and agree to these terms and conditions.</b></p>
+                <p><b>By paying the £25 deposit, you confirm that you have read and agree to these terms and conditions.</b></p>
 
                 <label class="terms-agreement" for="terms-checkbox">
                     <input type="checkbox" id="terms-checkbox">
                     <span>
                         I confirm that I have read and understood the
-                        <strong>£50 Deposit Terms &amp; Conditions</strong> above and
+                        <strong>£25 Deposit Terms &amp; Conditions</strong> above and
                         agree to be bound by them.
                     </span>
                 </label>
@@ -763,7 +763,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     payment_method: paymentMethod.id,
-                    totalDeposit: 50.00,
+                    totalDeposit: 25.00,
                     postcode: postcodeInput.value.trim(),
                     firstName: "<?php echo $_POST['firstName'] ?? ''; ?>",
                     lastName: "<?php echo $_POST['lastName'] ?? ''; ?>",
