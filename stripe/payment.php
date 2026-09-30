@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Booking Deposit | Photo Shoot Models</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=20260930">
     <script src="https://js.stripe.com/v3"></script>
     <style>
         .termsandconditions p {
