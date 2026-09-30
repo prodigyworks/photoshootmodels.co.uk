@@ -316,6 +316,9 @@ p {
   padding-top: 5px;
 }
 /************Header************/
+header {
+  position: relative;
+}
 .camera_wrap {
   height: 671px;
 }
@@ -356,13 +359,14 @@ h1 a {
   bottom: -18px;
 }
 header .bg-1 .grid_12 {
-  position: relative;
-  min-height: 145px;
+  position: static;
+  min-height: 90px;
 }
 header h1 {
   position: absolute;
-  top: -12px;
-  right: 0;
+  top: 20px;
+  right: auto;
+  left: 20px;
   float: none;
   z-index: 12;
 }
@@ -372,8 +376,8 @@ header h1 a {
 }
 header .book-photoshoot-btn {
   position: absolute;
-  top: 105px;
-  right: 0;
+  top: 20px;
+  right: 20px;
   float: none;
   clear: none;
   margin: 0;
@@ -384,6 +388,14 @@ header .book-photoshoot-btn {
 }
 .bg-1 h2 {
   padding-top: 45px;
+}
+@media (min-width: 1200px) {
+  .primary-contacts {
+    width: 300px;
+  }
+  .primary-contacts + .grid_3.preffix_1 {
+    margin-left: 40px;
+  }
 }
 .block-1 {
   text-align: center;
@@ -1168,22 +1180,29 @@ footer {
 }
 @media only screen and (max-width: 767px) {
   header .bg-1 .grid_12 {
-    min-height: 235px;
+    min-height: 45px;
   }
   header h1 {
     height: 0;
     width: 100%;
-    top: 55px;
+    top: 20px;
+    left: 20px;
   }
   header h1 a {
     top: 0;
     bottom: auto;
-    left: auto;
-    right: 0;
-    width: 150px;
+    left: 0;
+    right: auto;
+    width: 90px;
+  }
+  header h1 img {
+    width: 90px;
   }
   header .book-photoshoot-btn {
-    top: 175px;
+    top: 20px;
+    right: 20px;
+    padding: 8px 10px;
+    font-size: 11px;
   }
   h1 {
     height: 0;
@@ -1196,7 +1215,7 @@ footer {
     left: auto;
   }
   header .bg-1 {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
   .box-4 {
     margin-top: 30px;
@@ -1316,12 +1335,14 @@ footer {
 }
 
 .complaints-policy ul,
-.privacy-policy ul {
+.privacy-policy ul,
+.terms-and-conditions ul {
   margin-bottom: 20px;
 }
 
 .complaints-policy h2,
-.privacy-policy h2 {
+.privacy-policy h2,
+.terms-and-conditions h2 {
   line-height: 28px;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -1329,8 +1350,11 @@ footer {
 
 .complaints-policy-intro,
 .privacy-policy-intro,
+.terms-and-conditions-intro,
 .privacy-policy-intro h2,
-.privacy-policy-intro p {
+.privacy-policy-intro p,
+.terms-and-conditions-intro h2,
+.terms-and-conditions-intro p {
   text-align: center;
 }
 

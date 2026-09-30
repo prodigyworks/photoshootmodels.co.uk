@@ -790,6 +790,16 @@
             }
 
             const data = await response.json();
+            if (!data.success || typeof data.payment_intent !== 'string' || !data.payment_intent) {
+                if (paySpinner) paySpinner.style.display = 'none';
+                if (btnText) btnText.textContent = 'Place Payment On Hold';
+                payButton.disabled = false;
+                resultContainer.innerHTML = '<div class="error-box">' +
+                    '<strong>Payment failed:</strong> We could not confirm the payment. Please try again.' +
+                    '</div>';
+                return;
+            }
+
             resultContainer.innerHTML =
                 '<div class="success-box" id="success-message">' +
                     '<div class="success-icon">✓</div>' +
@@ -804,10 +814,10 @@
             const returnButton = document.getElementById('return-to-booking');
             if (returnButton) {
                 returnButton.addEventListener('click', () => {
-                    window.parent.postMessage({
+                    window.parent.postMessage(JSON.stringify({
                         type: 'payment_success',
                         intent: data.payment_intent
-                    }, '*');
+                    }), '*');
                     window.close(); 
                 });
             }
