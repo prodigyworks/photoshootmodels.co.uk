@@ -587,21 +587,6 @@
     </style>
 </head>
 <body>
-    <header class="payment-hero">
-        <div class="hero-carousel">
-            <div class="carousel-slide active" style="background-image: url('../images/slide-1.jpg');"></div>
-            <div class="carousel-slide" style="background-image: url('../images/slide-2.jpg');"></div>
-            <div class="carousel-slide" style="background-image: url('../images/slide-3.jpg');"></div>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-top">
-            <img class="hero-logo" src="../images/logomini.png" alt="Photo Shoot Models logo">
-            <div>
-                <div class="hero-brand">Photo Shoot Models</div>
-            </div>
-        </div>
-    </header>
-
     <section class="payment-form-section">
         <div class="payment-panel">
             <h2>Booking Deposit</h2>
