@@ -430,6 +430,13 @@ header .book-photoshoot-btn {
   opacity: 1;
   transform: translateY(0);
 }
+@media (max-width: 767px) {
+  .js section.content.terms-page > .container.scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 .js section.content .box-1,
 .js section.content .box-2,
 .js section.content .box-3,
