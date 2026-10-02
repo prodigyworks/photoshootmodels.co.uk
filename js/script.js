@@ -7,7 +7,7 @@ $(function(){
     });
 
     var revealTargets = document.querySelectorAll(
-        'section.content:not(.terms-page) > .container, section.content > .bg-1, ' +
+        'section.content:not(.policy-page) > .container, section.content > .bg-1, ' +
         'section.content .box-1, section.content .box-2, ' +
         'section.content .box-3, section.content .box-4'
     );
